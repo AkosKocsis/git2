@@ -1,0 +1,15 @@
+h1, h2 {
+    color: red;
+}
+
+img {
+    float: right;
+    border: 1px solid black;
+    margin: 6px;
+}
+
+body {
+    margin: 20px;
+    background-color: cornsilk;
+    text-align: justify;
+}

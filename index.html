@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/png" href="pics/favicon.png">
+    <title>Minden amit tudni kell a Gitről</title>
+</head>
+<body>
+    <h2>Mi az a Git?</h2>
+    <img class="kep" src="pics/areas.png" alt="Egy kép a Git alapjairól">
+    <p>A git-et a kódolásban történő változtatások nyomonkövetéséért használjuk. Emelett megtekinthetjük, hogy ki végezte a módosításokat.</p>
+    <h2>Mit csinál a Git?</h2>
+    <ul>
+        <li>A Git-el projektjeinket követhetjük nyomon</li>
+        <li>A Git használatával clone-olhatunk egy projektet, a clone után a saját gépeinken végezhetjük a kívánt változtatásokat</li>
+        <li>A "Staging" és a "Committing"- parancsokkal tudjuk nyomonkövethetni a projektünket</li>
+        <li>A "pull" parancs segítségével húzhatjuk le a projektünk utolsó verzióját a helyi gépünkre</li>
+        <li>A "push" paranccsal, pedig a helyi gépeken történő módosításokat tölthetjük fel a fő projekthez</li>
+    </ul>
+    <h2>A git előnyei:</h2>
+    <p>A Gitnek a további előnye, hogy a titkosított csatornát (ssh-n keresztül) használja.</p>
+    <p>Továbbá a Git lehetőséget biztosít a lokális tárolók (repository-k) szinkronizálására. Ennek két módja lehet: a tároló áthúzása (pull) és áttolása (push). Maga a tároló lehet a fájlrendszer egy másik pontján, vagy egy távoli gépen, amit HTTP(S)-en vagy SSH-n érhetünk el. Ez a két legelterjedtebb metódus a távoli tárolók elérésére, de a Git flexibilis felépítésének köszönhetően más megoldások (pl. IPFS támogatás) is szóba jöhetnek</p>
+    <h2>A pull folyamata</h2>
+    <p>Amikor egy távoli repository-t húzunk le (pull), a Git befésüli a commit listát a helyi tároló listájába, valamint a fájlok aktuális állapotát is megpróbálja összefésülni. Ha szerencsénk van, akkor a távoli repository-ban más fájlok változtak, mint helyben, így nem lesz probléma. Előfordulhat azonban az, hogy velünk egy időben egy másik fejelsztő is ugyanazzal a fájlal dolgozik mint mi és a rendszer nem képes összefésülni a helyi és a távoli változatot. Ekkor ütközés (conflict) keletkezik, és létrejön egy olyan fájl, ami a két változat összefésülésének eredménye, és meg vannak benne jelölve a problémás részek. Ezeket csak a fejesztő tudja rendbe rakni kézzel, hiszen ehhez érteni kell a kódot. Ha minden conflict feloldásra került, létre kell hozni egy új commitot, ami már a korrekten összefésült (merge-ölt) változatot tartalmazza. A fordított irányú szinkronizálás, vagyis a változások áttolása (push) jóval egyszerűbb, hiszen push-olni csak akkor tudunk, ha előtte lehúztuk (pull) a távoli tároló tartalmát és mindent rendberaktunk. A távoli tárolókat remote-nak nevezzük, és akárhány lehet belőlük. Hivatkozhatunk rájuk URL-el, vagy el is nevezhetjük őket. Azt is megtehetjük, hogy a lokális tárolónkat egy távoli tároló másolásával (clone) hozzuk létre. Ekkor a távoli tároló tartalma letöltődik a helyi gépünkre, és a fő ág (master branch) legutolsó változata lesz kibontva (checkout) a lokális fájlrendszerbe. Ilyen esetben létrjön egy origin nevű remote is, ami a forrás URL-re mutat. Ez lesz az alapértelmezett célja a pull/push műveleteknek, ha nem adunk meg más remote-ot</p>
+    <h2>Hogyan push-olunk?</h2>
+    <p>A szemléletbeli különbség ahhoz képest ahogy eddig éltünk az, hogy a dolgaink nem akkor vannak elmentve ha megnyomtuk az editorban a save gombot, hanem csak akkor, ha a git adatbázisunkba is bekerültek (commit). A dolgok tehát röviden a következőképp fognak kinézni, mindent részletesen leírok majd alább: frissítjük a helyi adatbázisunkat a központi Szerver nevű gépéről (arra az esetre gondolva, ha valaki más továbbírta azóta, hogy láttuk; pull). Ezután dolgozunk a filejainkon. Ha eljutottunk egy olyan állapotba amit érdemes menteni, akkor megmondjuk melyik filet vegye figyelembe (add, vagy stage), majd mentjük az adatbázisba (commit). Végül pedig feltöltjük a módosított adatbázist a Szerver-re (push)</p>
+</body>
+</html>
